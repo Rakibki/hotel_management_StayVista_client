@@ -1,9 +1,15 @@
+import Categories from "./categories/Categories";
+import Rooms from "./rooms/Rooms";
+import {useSearchParams} from "react-router-dom"
+ 
 const Home = () => {
+
   return (
     <div>
-      <h1>Welcome to StayVista</h1>
+      <Categories />
+      <Rooms />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
