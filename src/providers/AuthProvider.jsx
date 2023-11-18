@@ -12,6 +12,7 @@ import {
   updateProfile,
 } from 'firebase/auth'
 import { app } from '../firebase/firebase.config'
+import clearCookie from '../api/clearCookie'
 
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
@@ -43,6 +44,7 @@ const AuthProvider = ({ children }) => {
 
   const logOut = () => {
     setLoading(true)
+    clearCookie()
     return signOut(auth)
   }
 
@@ -64,6 +66,7 @@ const AuthProvider = ({ children }) => {
       return unsubscribe()
     }
   }, [])
+
 
   const authInfo = {
     user,
