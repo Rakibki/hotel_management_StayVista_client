@@ -1,10 +1,10 @@
 import React from 'react'
 import { DateRange } from 'react-date-range';
 
-const Calander = () => {
+const Calander = ({selectionRange}) => {
   return (
     <div>
-        <DateRange />
+        <DateRange ranges={[selectionRange]} />
     </div>
   )
 }

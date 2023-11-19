@@ -2,20 +2,21 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Loader from "../../../components/Shared/Loader";
 import Container from "../../../components/Shared/Container";
-import { useSearchParams } from "react-router-dom";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 import Heading from "../../../components/Shared/Heading";
+import { getAllRooms } from "../../../api/rooms";
 
-const Rooms = () => {
+const Rooms =  () => {
   const [rooms, setrooms] = useState([]);
   const [loadding, setLoadding] = useState(false);
 
   const [params, setParams] = useSearchParams();
   const myQuery = params.get("category");
 
+
   useEffect(() => {
     setLoadding(true);
-    fetch("./rooms.json")
-      .then((res) => res.json())
+    getAllRooms()
       .then((data) => {
         if (myQuery) {
           const filterData = data.filter((item) => item.category === myQuery);

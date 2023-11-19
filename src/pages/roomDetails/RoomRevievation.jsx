@@ -5,12 +5,14 @@ import { formatDistance } from "date-fns";
 
 const RoomRevievation = ({ room }) => {
 
-    // const totalDateDay = parseInt(
-    //   formatDistance(new Date(room?.to), new Date(room?.from))
-    // ).split(" ")[0];
-    // const totalPrice = totalDateDay * room?.price
-
+    const totalDateDay = parseInt(formatDistance(new Date(room?.to), new Date(room?.from)))
+    const totalPrice = totalDateDay * room?.price
     
+    const selectionRange = {
+      startDate: new Date(room.from),
+      endDate: new Date(room.to),
+      key: 'selection',
+    }
 
   return (
     <div className="p-4 col-span-3 m-6 rounded-xl border-[1px] ml-4 w-full border-neutral-200">
@@ -21,12 +23,12 @@ const RoomRevievation = ({ room }) => {
       <hr />
       <div className="flex justify-center">
         {" "}
-        <Calander />
+        <Calander selectionRange={selectionRange} />
       </div>
       <Button label={"Reserve"} />
       <div className="flex mt-4 justify-between">
         <div className="text-xl font-semibold">Total</div>
-        <div className="text-xl font-semibold">$1240</div>
+        <div className="text-xl font-semibold">${totalPrice}</div>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ const saveUser = async (user) => {
 
     const currentUser = {
         email: user?.email,
-        role: "Gost",
+        role: "guest",
         status: 'verifyed'
     }
 
