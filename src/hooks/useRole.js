@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import useAuth from './useAuth'
 import useAxuisPublic from './useAxiosPublic'
+import {useQuery} from "@tanstack/react-query"
 
 const useRole = () => {
     const AxuisPublic = useAxuisPublic() 
-    const [role, setRole] = useState(null)
-    const {user} = useAuth()
-    
-   useEffect(() => {
-    AxuisPublic.get(`/user/${user?.email}`)
-    .then((res) => {
-        setRole(res.data.role)
-    })  
-   }, [user])
+    const {user, loading} = useAuth()
 
-    return [role]
+const { isPending, data:role } = useQuery({
+    enabled: !loading && !!user.email,
+    queryKey: ['useRole', user?.email],
+    queryFn: () => AxuisPublic.get(`/user/${user?.email}`)
+      .then((res) => {
+        return res.data.role
+      })
+  })
+  return [role, isPending]
 }
 
 export default useRole

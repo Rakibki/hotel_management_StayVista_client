@@ -17,6 +17,12 @@ const HostMenu = () => {
         label="My Listing"
         address="/dashbord/myListing"
       />
+
+      <MenuItem
+        icon={FaListUl}
+        label="Manage Bookings"
+        address="/dashbord/namageBookings"
+      />
     </>
   );
 };

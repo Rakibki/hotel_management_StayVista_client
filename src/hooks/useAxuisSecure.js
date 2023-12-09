@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const AxuisSecure = axios.create({
-    baseURL: "http://localhost:4000",
+    baseURL: "https://server-rakibki.vercel.app",
     withCredentials: true
 })
 

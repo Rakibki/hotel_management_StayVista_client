@@ -1,0 +1,2 @@
+## project description
+Develop a hotel management website with role-based access, featuring three roles: admin, guest, and host. Hosts can add rooms, manage room details, and perform various functions. Guests can book rooms, while admins have control over all room management. Hosts can connect with guests, and additional functionalities enhance the overall user experience, ensuring seamless hotel operations.
